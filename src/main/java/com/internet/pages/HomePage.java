@@ -6,21 +6,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
+
+    @FindBy(css="a[href='/windows']")
+    WebElement windowsLink;
+
+    @FindBy(css="a[href='/javascript_alerts']")
+    WebElement alertsLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(css = "a[href='/javascript_alerts']")
-    WebElement javaScriptAlerts;
-
-    public AlertsPage getJavaScriptAlerts() {
-        click(javaScriptAlerts);
-        return new AlertsPage(driver);
-    }
-    @FindBy(css = "a[href='/windows']")
-    WebElement multipleWindows;
 
     public MultipleWindowsPage getMultipleWindowsPage() {
-        click(multipleWindows);
+        click(windowsLink);
         return new MultipleWindowsPage(driver);
     }
+
+    public AlertsPage getJavaScriptAlerts() {
+        click(alertsLink);
+        return new AlertsPage(driver);
+    }
 }
+

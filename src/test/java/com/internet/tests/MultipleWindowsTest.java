@@ -22,17 +22,9 @@ public class MultipleWindowsTest extends TestBase {
     @Test
     public void newWindowTest() {
 
-        String mainWindow = driver.getWindowHandle();
         windowsPage.openNewWindow();
-        Set<String> allWindows = driver.getWindowHandles();
-
-        for (String window : allWindows) {
-            if (!window.equals(mainWindow)) {
-                driver.switchTo().window(window);
-                break;
-            }
-        }
 
         assertEquals("New Window", driver.getTitle());
     }
+
 }

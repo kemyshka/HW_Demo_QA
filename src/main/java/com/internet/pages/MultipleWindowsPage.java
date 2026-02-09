@@ -1,5 +1,4 @@
 package com.internet.pages;
-
 import com.internet.core.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

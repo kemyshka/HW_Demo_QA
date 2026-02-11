@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class BasePage {
@@ -21,8 +20,6 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    /* ---------- BASIC ACTIONS ---------- */
-
     public void click(WebElement element) {
         element.click();
     }
@@ -34,9 +31,6 @@ public class BasePage {
             element.sendKeys(text);
         }
     }
-
-    /* ---------- WAITS ---------- */
-
     public void waitOfElementVisibility(WebElement element, int time) {
         new WebDriverWait(driver, Duration.ofSeconds(time))
                 .until(ExpectedConditions.visibilityOf(element));
@@ -47,21 +41,16 @@ public class BasePage {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    /* ---------- TEXT CHECK ---------- */
-
     public boolean shouldHaveText(WebElement element, String text, int time) {
         return new WebDriverWait(driver, Duration.ofSeconds(time))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
-    /* ---------- SCROLL ---------- */
 
     public void scrollWithJS(int x, int y) {
         ((JavascriptExecutor) driver)
                 .executeScript("window.scrollBy(arguments[0], arguments[1])", x, y);
     }
-
-    /* ---------- FRAMES ---------- */
 
     public void switchToFrame(String frameName) {
         driver.switchTo().frame(frameName);
@@ -71,7 +60,6 @@ public class BasePage {
         driver.switchTo().defaultContent();
     }
 
-    /* ---------- WINDOWS ---------- */
 
     public void switchToNewWindow() {
         String currentWindow = driver.getWindowHandle();
@@ -84,7 +72,6 @@ public class BasePage {
         }
     }
 
-    /* ---------- ALERTS ---------- */
 
     public void acceptAlert() {
         driver.switchTo().alert().accept();

@@ -72,6 +72,14 @@ public class HomePage extends BasePage {
         click(upload);
         return new UploadPage(driver);
     }
+    @FindBy(css = "a[href='/broken_images']")
+    WebElement brokenImages;
+
+    public BrokenImagesPage openBrokenImagesPage() {
+        click(brokenImages);
+        return new BrokenImagesPage(driver);
+    }
+
 
 
 }
